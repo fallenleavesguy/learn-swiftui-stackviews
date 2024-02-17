@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     var body: some View {
         VStack(spacing: 20) {
             VStack() {
@@ -36,7 +37,11 @@ struct ContentView: View {
             
             Spacer()
             
-            VSignUpButtonGroup()
+            if verticalSizeClass == .compact {
+               HSignUpButtonGroup()
+            } else {
+                VSignUpButtonGroup()
+            }
         }
 //        .padding(.top, 30)
     }
@@ -53,6 +58,35 @@ struct ContentView: View {
 struct VSignUpButtonGroup: View {
     var body: some View {
         VStack() {
+            Button {
+                
+            } label: {
+                Text("Sign up")
+            }
+            .frame(width: 200)
+            .padding()
+            .foregroundStyle(.white)
+            .background(.indigo)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            
+            Button {
+                
+            } label: {
+                Text("Log In")
+            }
+            .frame(width: 200)
+            .padding()
+            .foregroundStyle(.white)
+            .background(.gray)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
+    }
+}
+
+
+struct HSignUpButtonGroup: View {
+    var body: some View {
+        HStack() {
             Button {
                 
             } label: {
